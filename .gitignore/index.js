@@ -1495,55 +1495,6 @@ if(message.content.startsWith(prefix + "giveaways")) {
 
 
 
-    const { stripIndents } = require('common-tags');
-
-    const fishes = require('./fishy.json');
-
-bot.on("message", async msg => {
-
-
-if(msg.content.startsWith(prefix + 'fishy')){
-
-    const fishID = Math.floor(Math.random() * 10) + 1;
-
-
-
-    let rarity;
-
-
-
-    if (fishID < 5) rarity = 'junk';
-
-
-
-    else if (fishID < 8) rarity = 'common';
-
-
-
-    else if (fishID < 10) rarity = 'uncommon';
-
-
-
-    else rarity = 'rare';
-
-
-
-    const fish = fishes[rarity];
-
-
-
-    const worth = randomRange(fish.min, fish.max);
-
-
-
-    return msg.reply(`Vous avez attrapé un ${fish.symbol}. Je parie qu'il vendrait pour environ $${worth}.`);
-
-}
-
-
-
-});
-
 bot.on("message", async message => {
 
 
