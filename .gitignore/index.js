@@ -50,7 +50,7 @@ console.log(error)
 
 
 
-bot.login("NDg0MDg5MzUxMDUxOTM1NzQ2.D1xJrw.-MvBA2EwydLoKvsOjRh6Rv2wCFA")
+bot.login(process.env.TOKEN)
 
 
 
