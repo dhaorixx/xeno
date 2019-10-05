@@ -1497,71 +1497,10 @@ if(message.content.startsWith(prefix + "giveaways")) {
 
     const { stripIndents } = require('common-tags');
 
-    const slots = ['🍇', '🍊', '🍐', '🍒', '🍋'];
-
-    const { randomRange } = require('./Util.js');
-
     const fishes = require('./fishy.json');
 
 bot.on("message", async msg => {
 
-
-
-	 if(msg.content.startsWith(prefix + 'slot')){
-
-
-
-        const slotOne = slots[Math.floor(Math.random() * slots.length)];
-
-
-
-		const slotTwo = slots[Math.floor(Math.random() * slots.length)];
-
-
-
-		const slotThree = slots[Math.floor(Math.random() * slots.length)];
-
-
-
-		if (slotOne === slotTwo && slotOne === slotThree) {
-
-
-
-			return msg.reply(stripIndents`
-
-
-
-				${slotOne}|${slotTwo}|${slotThree}
-
-
-
-				ouah! Tu as gagné ! Excellent travail... euh... chance!
-
-
-
-			`);
-
-
-
-		}
-
-
-
-		return msg.reply(stripIndents`
-
-
-
-			${slotOne}|${slotTwo}|${slotThree}
-
-
-
-			aw... Vous avez perdu... Je suppose que c'est juste de la malchance, hein ?
-
-		`);
-
-    }
-
-	
 
 if(msg.content.startsWith(prefix + 'fishy')){
 
