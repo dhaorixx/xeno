@@ -13,7 +13,23 @@ var opus = require('opusscript');
 var prefix = "$"
 
 
-
+try {
+function changing_status() {
+    const status = [
+      `$help | ${bot.guilds.size} serveurs`,
+      `$maj | Dernière nouveaté`,
+      `$help | ${bot.users.size} utilisateus`,
+   
+    ];
+    const random = status[Math.floor(Math.random() * status.length)];
+    bot.user.setActivity(random, {
+        type: "WATCHING"
+    });
+}
+setInterval(changing_status, 20000);
+} catch (error) {
+console.log(error)
+}
 
 
 bot.login(process.env.TOKEN)
@@ -1342,7 +1358,6 @@ bot.on('message', message =>{
     const { stripIndents } = require('common-tags');
     const { randomRange } = require('./Util.js');
     const fishes = require('./fishy.json');
-const { stripIndents } = require('common-tags');
 
 const slots = ['🍇', '🍊', '🍐', '🍒', '🍋'];
 
