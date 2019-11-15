@@ -12,6 +12,25 @@ var opus = require('opusscript');
 
 var prefix = "$"
 
+try {
+function changing_status() {
+    const status = [
+      `$help | ${bot.guilds.size} serveurs`,
+      `$maj | Dernière nouveaté`,
+      `$help | ${bot.users.size} utilisateus`,
+   
+    ];
+    const random = status[Math.floor(Math.random() * status.length)];
+    bot.user.setActivity(random, {
+        type: "WATCHING"
+    });
+}
+setInterval(changing_status, 20000);
+} catch (error) {
+console.log(error)
+}
+
+
 
 bot.login(process.env.TOKEN)
 
@@ -229,7 +248,7 @@ bot.on('message', message =>{
 
         .addField("**:octagonal_sign: - MODERATION**", "``$say``, ``$giveaways``, ``$kick``, ``$ban``, ``$mute<mention>``, ``$unmute<mention>``, ``$tempmute``, ``$clear<nombre>``, ``$sondage<1ou2>``")
 
-        .addField("**:confetti_ball: - FUN**", "``$ping``, ``$bar``, ``$chance``, ``$lovecalc``, ``$avatar<mention>``, ``$chance``,``$pileouface``, ``$joke``, ``$xenolda question?``")
+        .addField("**:confetti_ball: - FUN**", "``$ping``, ``$bar``, ``$slot``, ``$fishy``, ``$lovecalc``, ``$avatar<mention>``, ``$chance``,``$pileouface``, ``$joke``, ``$xenolda question?``")
 
         .addField("**:notebook_with_decorative_cover: - UTILE**", "``$userinfo``, ``$serverlist``, ``$servinfo``, ``$invite``, ``$new-ticket``, ``$close``, ``$report <mention> <message>``")
 
@@ -1336,9 +1355,88 @@ bot.on('message', message =>{
 });
 
 
+    const { stripIndents } = require('common-tags');
+    const { randomRange } = require('./Util.js');
+    const fishes = require('./fishy.json');
+const { stripIndents } = require('common-tags');
+
+const slots = ['🍇', '🍊', '🍐', '🍒', '🍋'];
 
 bot.on("message", async message => {
 
+	if(msg.content.startsWith(prefix + 'slot')){
+
+
+
+    const slotOne = slots[Math.floor(Math.random() * slots.length)];
+
+
+
+    const slotTwo = slots[Math.floor(Math.random() * slots.length)];
+
+
+
+    const slotThree = slots[Math.floor(Math.random() * slots.length)];
+
+
+
+    if (slotOne === slotTwo && slotOne === slotThree) {
+
+
+
+        return msg.reply(stripIndents`
+
+
+
+            ${slotOne}|${slotTwo}|${slotThree}
+
+
+
+            ouah! Tu as gagné ! Excellent travail... euh... chance!
+
+
+
+        `);
+
+
+
+    }
+
+
+
+    return msg.reply(stripIndents`
+
+
+
+        ${slotOne}|${slotTwo}|${slotThree}
+
+
+
+        aw... Vous avez perdu... Je suppose que c'est juste de la malchance, hein ?
+
+    `);
+
+}
+
+if(msg.content.startsWith(prefix + 'fishy')){
+    const fishID = Math.floor(Math.random() * 10) + 1;
+
+    let rarity;
+
+    if (fishID < 5) rarity = 'junk';
+
+    else if (fishID < 8) rarity = 'common';
+
+    else if (fishID < 10) rarity = 'uncommon';
+
+    else rarity = 'rare';
+
+    const fish = fishes[rarity];
+
+    const worth = randomRange(fish.min, fish.max);
+
+    return msg.reply(`Vous avez attrapé un ${fish.symbol}. Je parie qu'il vendrait pour environ $${worth}.`);
+}
 
 
 if(message.content.startsWith(prefix + "giveaways")) {
